@@ -65,7 +65,6 @@ reset_handler:
 
 _start:
   .global _start
-  j main
   /* clear BSS */
   la x26, _bss_start
   la x27, _bss_end
