@@ -28,6 +28,7 @@ SOFTWARE.
 
 reset_handler:
   /* set all registers to zero */
+  nop
   mv  x1, x0
   mv  x2, x1
   mv  x3, x1
