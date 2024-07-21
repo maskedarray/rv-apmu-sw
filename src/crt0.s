@@ -25,6 +25,8 @@ SOFTWARE.
 
 # default_exc_handler:
 #   jal x0, simple_exc_handler
+_start:
+  .global _start
 
 reset_handler:
   /* set all registers to zero */
@@ -62,10 +64,8 @@ reset_handler:
   mv x31, x1
 
   /* stack initilization */
-  la   x2, _stack_start
+  la   x2, _stack_end
 
-_start:
-  .global _start
   /* clear BSS */
   la x26, _bss_start
   la x27, _bss_end
