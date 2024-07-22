@@ -2,9 +2,9 @@
 
 # Compiler and flags
 CC = clang
-CFLAGS = --target=riscv32-unknown-elf -march=rv32imc -mabi=ilp32 -mcmodel=medany \
+CFLAGS = --target=riscv32-unknown-elf -march=rv32im -mabi=ilp32 -mcmodel=medany \
          -Wall -fvisibility=hidden -ffreestanding \
-         -nostartfiles -O0
+         -nostartfiles -O2
 
 # Source directory
 SRC_DIR = src
@@ -44,3 +44,5 @@ clean:
 dump: $(TARGET)
 	llvm-objdump -d $(TARGET) > $(ASM_FILE)
 	llvm-objcopy -O binary $(TARGET) $(BIN_FILE)
+
+# echo "uint32_t program [] = {"$(xxd -e -g 4 -c 4 build/output.bin | awk '{print $2}' | sed 's/\(..\)\(..\)\(..\)\(..\)/0x\1\2\3\4/' | paste -sd ',' -)"};""" > build/header.h
